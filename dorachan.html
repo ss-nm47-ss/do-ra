@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Spark</title>
+    <link rel="stylesheet" href="kinoko.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script> <!-- QR Codeライブラリを追加 -->
+</head>
+<body>
+    <div class="container">
+        <h3 style="font-size: 72px;">TEAM SPARK</h3>
+        <!-- Team Spark Card with QR Code -->
+        <div class="card team-spark">
+            <span>+</span>
+    
+            <!-- QR Code Container -->
+            <div id="qrcode-team-spark" class="qr-code"></div>
+        </div>
+
+        <!-- Other cards remain unchanged -->
+        <a href="file:///C:/Users/inono/OneDrive/いんふぉめ/components/KinokoTakenokoVote.html" class="card employee-handbook">
+            <span>+</span>
+
+            <div class="icon">🌿</div> <!-- Custom Icon -->
+            <h3 style="color: #FFF8EA;">きのこ？　　　　たけのこ？</h3>
+        </a>
+
+        <a href="file:///C:/Users/inono/OneDrive/いんふぉめ/2-1.html" class="card project-reports">
+            <span>+</span>
+            <div class="icon">🍂</div> <!-- Custom Icon -->
+            <h3 style="color: #FFF8EA;">懐かしいものを語り合おう！</h3>
+        </a>
+
+        <a href="file:///C:/Users/inono/OneDrive/いんふぉめ/3-1.html" class="card annual-report">
+            <span>+</span>
+            <div class="icon">🌾</div> <!-- Custom Icon -->
+            <h3 style="color: #E6F3FF;">真実を当てよう！真実・嘘ゲーム！</h3>
+        </a>
+
+        <a href="file:///C:/Users/inono/OneDrive/いんふぉめ/4-1.html" class="card new-services">
+            <span>+</span>
+            <div class="icon">✨</div> <!-- Custom Icon -->
+            <h3 style="color: #B19CD9;">スマホ写真即興披露!</h3>
+        </a>
+    </div>
+
+    <!-- Script to Generate QR Code -->
+    <script>
+        // Generate QR Code for Team Spark
+        const teamSparkLink = "https://ss-nm47-ss.github.io/doradoradora/"; // The URL for the QR code
+        new QRCode(document.getElementById("qrcode-team-spark"), {
+            text: teamSparkLink,
+            width: 100, // QR Code width
+            height: 100, // QR Code height
+            colorDark: "#000000", // Dark color
+            colorLight: "#ffffff", // Light color
+            correctLevel: QRCode.CorrectLevel.H // Error correction level
+        });
+    </script>
+</body>
+</html>

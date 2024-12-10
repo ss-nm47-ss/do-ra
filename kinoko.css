@@ -1,0 +1,329 @@
+ <style>
+        /* 同じスタイル */
+        @font-face {
+            font-family: 'TAN New York';
+            src: url('TAN-NewYork.otf') format('opentype');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFF4E3;
+            font-family: 'TAN New York', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 15px;
+            width: 250px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition: 0.3s ease-in-out;
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            display: none;
+            z-index: 10;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5E4981;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            background-color: #B38746;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 5;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .shared-results {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #FFF;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .shared-results ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .shared-results li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #E0F0FF;
+            border-radius: 5px;
+        }
+    </style>
+
+    <div class="container">
+        <!-- Team Spark Card -->
+        <div class="card team-spark" id="teamSparkCard">
+            <span>+</span>
+            <img src="book-image.jpg" alt="Team Spark">
+            <h3>Team Spark</h3>
+        </div>
+    </div>
+
+    <!-- Modal for input -->
+    <div class="modal" id="teamSparkModal">
+        <h2>Share Your Code</h2>
+        <input type="text" id="codeInput" placeholder="Enter your code">
+        <button id="submitCodeButton">Submit</button>
+    </div>
+    <div class="overlay" id="modalOverlay"></div>
+
+    <!-- Shared Results -->
+    <div class="shared-results" id="sharedResults">
+        <h3>Shared Results:</h3>
+        <ul id="resultsList"></ul>
+    </div>
+
+    <script>
+        // Modal elements
+        const teamSparkCard = document.getElementById('teamSparkCard');
+        const teamSparkModal = document.getElementById('teamSparkModal');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const codeInput = document.getElementById('codeInput');
+        const submitCodeButton = document.getElementById('submitCodeButton');
+        const sharedResults = document.getElementById('sharedResults');
+        const resultsList = document.getElementById('resultsList');
+
+        // Open modal
+        teamSparkCard.addEventListener('click', () => {
+            teamSparkModal.classList.add('active');
+            modalOverlay.classList.add('active');
+        });
+
+        // Close modal when overlay is clicked
+        modalOverlay.addEventListener('click', () => {
+            teamSparkModal.classList.remove('active');
+            modalOverlay.classList.remove('active');
+        });
+
+        // Submit code
+        submitCodeButton.addEventListener('click', () => {
+            const code = codeInput.value.trim();
+            if (code) {
+                saveCode(code);
+                codeInput.value = '';
+                updateResults();
+                teamSparkModal.classList.remove('active');
+                modalOverlay.classList.remove('active');
+            } else {
+                alert('Please enter a code.');
+            }
+        });
+
+        // Save code to local storage
+        function saveCode(code) {
+            const codes = JSON.parse(localStorage.getItem('sharedCodes')) || [];
+            codes.push(code);
+            localStorage.setItem('sharedCodes', JSON.stringify(codes));
+        }
+
+        // Load codes from local storage and update results
+        function updateResults() {
+            const codes = JSON.parse(localStorage.getItem('sharedCodes')) || [];
+            resultsList.innerHTML = '';
+            codes.forEach(code => {
+                const listItem = document.createElement('li');
+                listItem.textContent = code;
+                resultsList.appendChild(listItem);
+            });
+        }
+
+        // Initial load
+        updateResults();
+    </script>
+</body>
+</html>
+
+    <title>Team Spark</title>
+    <style>
+        /* Import TAN New York font */
+        @font-face {
+            font-family: 'TAN New York';
+            src: url('TAN-NewYork.otf') format('opentype'); /* フォントファイルをプロジェクトに追加してください */
+        }
+
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFF4E3; /* Light beige background */
+            font-family: 'TAN New York', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        /* Individual Card Styling */
+        .card {
+            position: relative;
+            border-radius: 15px;
+            width: 250px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-decoration: none; /* Remove link underline */
+            color: black;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-top: 20px;
+        }
+
+        .card span {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #B38746; /* Color of the "+" */
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+
+        /* Hover effect for cards */
+        .card:hover {
+            transform: scale(1.05);
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Card-specific styles */
+        .team-spark {
+            grid-column: 1 / span 2;
+            grid-row: 1;
+            background-color: #E0F0FF;
+        }
+
+        .employee-handbook {
+            grid-column: 3;
+            grid-row: 1;
+            background-color: #E5D3F3;
+        }
+
+        .project-reports {
+            grid-column: 4;
+            grid-row: 1;
+            background-color: #E7CA99;
+        }
+
+        .annual-report {
+            grid-column: 3;
+            grid-row: 2;
+            background-color: #FFA37F;
+        }
+
+        .new-services {
+            grid-column: 4;
+            grid-row: 2;
+            background-color: #D6E8FA;
+        }
+
+        /* Icons */
+        .icon {
+            font-size: 4rem;
+            color: #5E4981;
+            margin-bottom: 10px;
+        }
+
+        /* Image in Team Spark */
+        .team-spark img {
+            width: 100px;
+            height: auto;
+            border-radius: 15px;
+            margin: 10px 0;
+        }
+  </style>

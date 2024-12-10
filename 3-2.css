@@ -1,0 +1,54 @@
+/* ベース設定 */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #FFF7F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* コンテナ */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* カードデザイン */
+.card {
+  background-color: #FFD1C1;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  width: 550px;
+}
+
+.card .icon img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.card h1 {
+  font-size: 2.0rem;
+  color: #fff;
+  margin: bottom 30px;px:
+}
+
+/* ボタンデザイン */
+button {
+  background-color: #FFFFFF;
+  color: #FF6F61;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #FFE8E3;
+}

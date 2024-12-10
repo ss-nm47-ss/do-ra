@@ -1,0 +1,84 @@
+/* 全体の背景 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf4e3;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* カードのスタイル */
+  .card {
+    background-color: #f0d9b5;
+    width: 300px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* アイコンのスタイル */
+  .icon {
+    margin: 20px auto;
+    position: relative;
+    height: 50px;
+    width: 50px;
+  }
+  
+  .leaf {
+    position: absolute;
+    background-color: #f05a28;
+    border-radius: 50%;
+    width: 25px;
+    height: 15px;
+    transform-origin: center;
+  }
+  
+  .leaf-red {
+    background-color: #f05a28;
+    transform: rotate(45deg) translate(10px, -5px);
+  }
+  
+  .leaf-orange {
+    background-color: #f0a500;
+    transform: rotate(-20deg) translate(-15px, 5px);
+  }
+  
+  .leaf-small {
+    background-color: #dda15e;
+    width: 15px;
+    height: 10px;
+    transform: rotate(20deg) translate(10px, 10px);
+  }
+  
+  /* テキスト部分 */
+  .content h1 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .content p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* ボタン */
+  button {
+    background-color: #e76f51;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #d95d39;
+  }
+  

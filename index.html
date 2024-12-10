@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>のび太の究極友達作り革命2.0™️ - 孤独撲滅プロジェクト</title>
+    <link rel="stylesheet" href="doradora.css">
+</head>
+<body>
+    <div class="container">
+        <h1>のび太の究極友達作り革命2.0™️</h1>
+        <div class="subtitle blink">- 孤独撲滅プロジェクト -</div>
+        
+        <p class="intro-text">
+            グループワークで孤立しがちなあなたに！たった<span class="blink">30秒</span>でグループワークを良くする魔法のアプリ 「Team Spark」！
+        </p>
+
+        <div class="feature">
+            <h2>🎭懐かしいものを語り合おう！</h2>
+            <p>子供の頃に見ていたアニメややっていたゲームなどを、お題ごとに話そう</p>
+        </div>
+
+        <div class="feature">
+            <h2>💬みんなで議論！意見を言い合おう</h2>
+            <p>きのこ派？たけのこ派？　紅茶派？コーヒー派？チームに分かれてディベートしてみよう</p>
+        </div>
+
+        <div class="feature">
+            <h2>🎮真実を当てよう！真実・嘘ゲーム！</h2>
+            <p>表示されたテーマに沿って、自分に関する「本当のこと1つ」と「嘘2つ」を言って、みんながその中から本当のことを当てるゲームです。</p>
+        </div>
+
+        <div class="feature">
+            <h2>📸スマホ写真即興披露！</h2>
+            <p>全員がスマホの写真フォルダから、日にちを決めてランダムにスクロールして一枚写真を見せ合います。どんな写真か、どこで撮ったかを一言！予期しない写真が出てきて、会話の種が簡単に増えます</p>
+        </div>
+
+        <div class="testimonial">
+            「このアプリを使い始めてから、グループの雰囲気が180度変わりました！今ではメンバーが誰でも意見を言い合える関係になりました！グループワークが終わっても仲良しです！」<br>
+            - のび太（20歳・大学生）
+        </div>
+
+        <div class="testimonial">
+            「これまではチームで僕しか発言していませんでしたが、このアプリを使うと他のメンバーも話してくれるようになりました！」<br>
+            - 出来杉（22歳、大学院生）
+        </div>
+
+        <div class="price">通常価格: ¥999,800</div>
+        <div class="special-price">今だけ特別価格: ¥99！</div>
+
+    
+        <div class="countdown">
+            ⏰ 特別価格終了まであと：<span id="countdown">05:00</span>        
+        </div>
+
+        <a href="dorachan.html"" class="cta-button">今すぐ試してみる！</a>
+
+        <div class="bonus">
+            <h3>🎁 期間限定ボーナス特典 🎁</h3>
+            <ul>
+                <li>「グループワークでいい成績を取る方法」PDFガイド</li>
+                <li>「チームビルディング論」音声講座</li>
+                <li>「効果的グループワーク」瞑想CD</li>
+            </ul>
+            <p>合計価値¥50,000相当が無料！</p>
+        </div>
+
+        <div class="guarantee">
+            <p>⭐️ 30日間100%全額返金保証付き ⭐️</p>
+            <p>効果がなければ、あなたの「グループワーク険悪」状態も全額返金します！</p>
+        </div>
+
+        <div class="secret-technique">
+            🔐 トップシークレット：究極の友達作り奥義を見る 🔐
+        </div>
+        <div class="secret-technique-content">
+            驚異の友達作り奥義：「笑顔で挨拶する」<br>
+            この秘密の奥義を実践するだけで、友達が勝手に寄ってくるようになります！
+        </div>
+
+        <div class="review-section">
+            <h2>口コミを投稿する</h2>
+            <form class="review-form" id="reviewForm">
+                <input type="text" name="name" placeholder="お名前" required>
+                <textarea name="review" placeholder="口コミを入力してください" required></textarea>
+                <button type="submit" class="cta-button">口コミを投稿</button>
+            </form>
+        </div>
+
+        <div class="reviews-container">
+            <h2>投稿された口コミ</h2>
+            <div id="reviewsContainer">
+                <div class="review">
+                    <p><span class="review-name">剛田武:</span> このアプリで友達100人できました！すごい！</p>
+                </div>
+                <div class="review">
+                    <p><span class="review-name">骨川スネ夫:</span> グループワークが楽しくなりました。おすすめです！</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="disclaimer">
+            ※効果には個人差があります。グループワークが改善されなかった場合の責任は負いかねます。本アプリは医薬品、医療機器等の品質、有効性及び安全性の確保等に関する法律の対象外製品です。使用は自己責任でお願いします。稀にグループの雰囲気が険悪になる場合があります。
+        </p>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var fiveMinutes = 60 * 5,
+                display = document.querySelector('#countdown');
+            startTimer(fiveMinutes, display);
+        };
+
+        // Review Submission
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = this.elements['name'].value;
+            var review = this.elements['review'].value;
+            
+            var newReview = document.createElement('div');
+            newReview.className = 'review';
+            newReview.innerHTML = '<p><span class="review-name">' + name + ':</span> ' + review + '</p>';
+            
+            var reviewsContainer = document.getElementById('reviewsContainer');
+            reviewsContainer.insertBefore(newReview, reviewsContainer.firstChild);
+            
+            this.reset();
+
+            // Remove the review after 20 seconds
+            setTimeout(function() {
+                newReview.remove();
+            }, 10000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キノコ派 vs タケノコ派</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #E5D3F3;
+            font-family: Arial, sans-serif;
+            color: #5E4981;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .vote-button {
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+            background-color: #FFF4E3;
+            color: #5E4981;
+            border: 2px solid #5E4981;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .vote-button:hover {
+            background-color: #D6E8FA;
+            color: black;
+        }
+        .card {
+            background-color: #FFF4E3;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .result-bar {
+            width: 100%;
+            height: 1.5rem;
+            background-color: #FFF4E3;
+            border-radius: 0.25rem;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        .bar {
+            height: 100%;
+            color: white;
+            text-align: center;
+            line-height: 1.5rem;
+        }
+        .kinoko-bar {
+            background-color: #B38746;
+            float: left;
+        }
+        .takenoko-bar {
+            background-color: #5E4981;
+            float: right;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #5E4981;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #B38746;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-button">ダッシュボードに戻る</a>
+        <h1>あなたはどっち派？</h1>
+        <p>家族や友達と議論しよう！</p>
+        <div class="button-container">
+            <button class="vote-button" onclick="vote('kinoko')">🍄 キノコ派</button>
+            <button class="vote-button" onclick="vote('takenoko')">🎋 タケノコ派</button>
+        </div>
+        <div class="card">
+            <div class="card-title">投票結果</div>
+            <p>キノコ派: <span id="kinoko-count">0</span></p>
+            <p>タケノコ派: <span id="takenoko-count">0</span></p>
+            <div class="result-bar">
+                <div id="kinoko-bar" class="bar kinoko-bar" style="width: 50%;">50.0%</div>
+                <div id="takenoko-bar" class="bar takenoko-bar" style="width: 50%;">50.0%</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let votes = { kinoko: 0, takenoko: 0 };
+
+        function loadVotes() {
+            const storedKinokoVotes = parseInt(localStorage.getItem('kinokoVotes') || '0');
+            const storedTakenokoVotes = parseInt(localStorage.getItem('takenokoVotes') || '0');
+            votes = { kinoko: storedKinokoVotes, takenoko: storedTakenokoVotes };
+            updateDisplay();
+        }
+
+        function vote(type) {
+            votes[type]++;
+            localStorage.setItem('kinokoVotes', votes.kinoko.toString());
+            localStorage.setItem('takenokoVotes', votes.takenoko.toString());
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById('kinoko-count').textContent = votes.kinoko;
+            document.getElementById('takenoko-count').textContent = votes.takenoko;
+
+            const total = votes.kinoko + votes.takenoko;
+            const kinokoPercentage = total ? (votes.kinoko / total * 100).toFixed(1) : '50.0';
+            const takenokoPercentage = total ? (votes.takenoko / total * 100).toFixed(1) : '50.0';
+
+            const kinokoBar = document.getElementById('kinoko-bar');
+            const takenokoBar = document.getElementById('takenoko-bar');
+
+            kinokoBar.style.width = `${kinokoPercentage}%`;
+            kinokoBar.textContent = `${kinokoPercentage}%`;
+
+            takenokoBar.style.width = `${takenokoPercentage}%`;
+            takenokoBar.textContent = `${takenokoPercentage}%`;
+        }
+
+        window.onload = loadVotes;
+    </script>
+</body>
+</html>
+
+
