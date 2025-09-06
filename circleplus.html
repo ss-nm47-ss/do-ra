@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle+ 評価フォーム</title>
+    <link rel="stylesheet" href="circleplus.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Circle+ 評価フォーム</h1>
+        <form id="evaluationForm">
+            <div class="item">
+                <span class="label">安心感</span>
+                <div class="stars" data-name="安心感"></div>
+            </div>
+            <div class="item">
+                <span class="label">支援性</span>
+                <div class="stars" data-name="支援性"></div>
+            </div>
+            <div class="item">
+                <span class="label">報連相</span>
+                <div class="stars" data-name="報連相"></div>
+            </div>
+            <div class="item">
+                <span class="label">気づき力</span>
+                <div class="stars" data-name="気づき力"></div>
+            </div>
+            <div class="item">
+                <span class="label">雰囲気力</span>
+                <div class="stars" data-name="雰囲気力"></div>
+            </div>
+            <textarea id="comment" placeholder="褒めコメント（任意）"></textarea>
+            <button type="submit" class="submit">評価送信</button>
+            <p id="message" class="message"></p>
+        </form>
+    </div>
+
+    <script src="circleplus.js"></script>
+</body>
+</html>
